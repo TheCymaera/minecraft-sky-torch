@@ -37,26 +37,7 @@ fun registerCommands() {
 
             "big" to ::presetBig,
 
-            "stage1" to ::presetStage1,
-            "stage2" to ::presetStage2,
-            "stage3" to ::presetStage3,
-            "stage4" to ::presetStage4,
-            "stage5" to ::presetStage5,
-            "stage6" to ::presetStage6,
-            "stage7" to ::presetStage7,
-            "stage8" to ::presetStage8,
-            "stage9" to ::presetStage9,
-            "stage10" to ::presetStage10,
-            "stage11" to ::presetStage11,
-            "stage12" to ::presetStage12,
-            "stage13" to ::presetStage13,
-            "stage14" to ::presetStage14,
-            "stage15" to ::presetStage15,
-            "stage16" to ::presetStage16,
-            "stage17" to ::presetStage17,
-
             "shockwaveVisualizer" to ::presetShockwaveVisualizer,
-            "shockwaveOnly" to ::presetShockwaveOnly,
 
             "enableFlicker" to ::presetEnableFlicker,
             "disableFlicker" to ::presetDisableFlicker,

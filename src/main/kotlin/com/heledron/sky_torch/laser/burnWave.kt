@@ -30,8 +30,6 @@ class BurnWaveOptions {
     var airDragCoefficient = .005
 
 
-    var disableRotation = false
-    var disableSmartRendering = false
     var disableHeat = false
 }
 
@@ -62,17 +60,7 @@ private fun spawnBurnCloud(placement: BurnWavePlacement, options: BurnWaveOption
     maxAge = Random.nextInt(options.durationMin, options.durationMax),
     blocks = options.palette.burn.burnWave.random(),
     renderLocation = placement.render.toLocation(placement.world),
-    disableSmartRendering = options.disableSmartRendering,
 ).apply {
-    if  (options.disableRotation) {
-        pitch = 0f
-        yaw = 0f
-        pitchVelocity = 0f
-        yawVelocity = 0f
-    }
-
-
-
 //    val affectedPlayers = mutableListOf<org.bukkit.entity.Player>()
 
     onUpdate = {
@@ -102,7 +90,7 @@ private fun spawnBurnCloud(placement: BurnWavePlacement, options: BurnWaveOption
         val top = location.clone().add(.0,scanUpwards,.0)
         val ground = raycastGround(top, Vector(0, -1, 0), scanUpwards + scanDownwards)?.hitPosition?.toLocation(location.world!!) ?: location.clone()
 
-        if (location.block.type.isOccluding && !options.disableRotation) {
+        if (location.block.type.isOccluding) {
             location.y = location.y.lerp(ground.y + size / 2, .03)
         }
 

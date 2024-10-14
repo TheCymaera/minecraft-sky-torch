@@ -7,12 +7,30 @@ commands:
   items:
     description: Open the items menu
     usage: /items
+    permission: sky_torch.items
   reload_config:
     description: Reload the configuration file
     usage: /reload_config
+    permission: sky_torch.reload_config
   preset:
     description: Select a preset
     usage: /preset <enum>
+    permission: sky_torch.preset
   scale:
     description: Scale the laser
     usage: /scale <double>
+    permission: sky_torch.scale
+
+permissions:
+  sky_torch.items:
+    description: Allows access to the items command
+    default: op
+  sky_torch.reload_config:
+    description: Allows access to the reload_config command
+    default: op
+  sky_torch.preset:
+    description: Allows access to the preset command
+    default: op
+  sky_torch.scale:
+    description: Allows access to the scale command
+    default: op

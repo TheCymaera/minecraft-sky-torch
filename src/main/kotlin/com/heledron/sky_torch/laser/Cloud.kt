@@ -18,7 +18,6 @@ class Cloud(
     val growth: Double,
     val maxAge: Int,
     val blocks: List<BlockData>,
-    var disableSmartRendering: Boolean = false,
 ): GameObject() {
     var age = 0
 
@@ -51,12 +50,8 @@ class Cloud(
         AppState.renderer.render(this, getModel())
     }
 
-    private fun getSmartRenderLocation(): Location {
-        return if (disableSmartRendering) location else renderLocation
-    }
-
     private fun getModel() = blockModel(
-        location = getSmartRenderLocation(),
+        location = renderLocation,
         init = {
             it.brightness = Display.Brightness(15, 15)
             it.teleportDuration = 1
@@ -67,7 +62,7 @@ class Cloud(
             val index = (age.toFloat() / maxAge * blocks.size).toInt().coerceAtMost(blocks.size - 1)
 
 //            val location = location.clone().add(velocity.clone().normalize().multiply(size / 2))
-            val diff = location.toVector().subtract(getSmartRenderLocation().toVector())
+            val diff = location.toVector().subtract(renderLocation.toVector())
 
             it.block = blocks[index]
 

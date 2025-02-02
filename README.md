@@ -12,7 +12,7 @@ This plugin was developed for a video:
 5. Place the world folder in the server directory. Name it `world`.
 
 ## Running a Server
-1. Download a 1.21 server JAR from [Paper](https://papermc.io/downloads) or [Spigot](https://getbukkit.org/download/spigot).
+1. Download a server JAR from [Paper](https://papermc.io/downloads) or [Spigot](https://getbukkit.org/download/spigot).
 2. Run the following command `java -Xmx1024M -Xms1024M -jar server.jar nogui`.
 3. I typically use the Java runtime bundled with my Minecraft installation so as to avoid version conflicts.
    - In Modrinth, you can find the Java runtime location inside the profile options menu.

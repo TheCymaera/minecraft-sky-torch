@@ -67,7 +67,7 @@ fun registerCustomItems() {
             val distance = renderLocation.distance(hit)
             println(distance)
 
-            if (distance < 64) renderLocation.copy(hit)
+//            if (distance < 64) renderLocation.copy(hit)
 
             val placement = LaserPlacement(
                 world = world,

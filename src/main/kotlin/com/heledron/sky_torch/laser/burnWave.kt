@@ -63,7 +63,7 @@ private fun spawnBurnCloud(placement: BurnWavePlacement, options: BurnWaveOption
 ).apply {
 //    val affectedPlayers = mutableListOf<org.bukkit.entity.Player>()
 
-    onUpdate = {
+    onUpdate = fun () {
 //        val location = location.clone().add(velocity.clone().normalize().multiply(size / 2))
 
         velocity.multiply(1 - options.airDragCoefficient)
@@ -83,12 +83,14 @@ private fun spawnBurnCloud(placement: BurnWavePlacement, options: BurnWaveOption
 ////            ))
 //        }
 
-
+        // don't load new chunks
+        if (!location.block.chunk.isLoaded) return
 
         val scanUpwards = size / 2 + options.scanUpwards
         val scanDownwards = size / 2 + options.scanDownwards
         val top = location.clone().add(.0,scanUpwards,.0)
         val ground = raycastGround(top, Vector(0, -1, 0), scanUpwards + scanDownwards)?.hitPosition?.toLocation(location.world!!) ?: location.clone()
+
 
         if (location.block.type.isOccluding) {
             location.y = location.y.lerp(ground.y + size / 2, .03)
@@ -102,6 +104,9 @@ private fun spawnBurnCloud(placement: BurnWavePlacement, options: BurnWaveOption
                 Random.nextDouble(-burnHeight, burnHeight).toInt(),
                 Random.nextInt(-3, 3),
             )
+
+            // don't load new chunks
+            if (!block.chunk.isLoaded) return@repeat
 
             val heat = if (options.disableHeat) .5f else 1f - (age.toFloat() / maxAge)
 

@@ -41,6 +41,9 @@ fun registerCommands() {
 
             "enableFlicker" to ::presetEnableFlicker,
             "disableFlicker" to ::presetDisableFlicker,
+
+            "enableBlinding" to ::presetEnableBlinding,
+            "disableBlinding" to ::presetDisableBlinding,
         )
 
         setExecutor { sender, _, _, args ->
@@ -74,7 +77,7 @@ fun registerCommands() {
     }
 }
 
-fun sendMessageOrActionBar(sender: org.bukkit.command.CommandSender, message: String) {
+private fun sendMessageOrActionBar(sender: org.bukkit.command.CommandSender, message: String) {
     if (sender is org.bukkit.entity.Player) {
         sendActionBar(sender, message)
     } else {

@@ -32,6 +32,14 @@ fun presetDisableFlicker() {
     AppState.options.glowWidthMin = AppState.options.glowWidthMax
 }
 
+fun presetEnableBlinding() {
+    AppState.options.blinding.enabled = true
+}
+
+fun presetDisableBlinding() {
+    AppState.options.blinding.enabled = false
+}
+
 fun presetBig() {
     presetSetScale(1.0)
 

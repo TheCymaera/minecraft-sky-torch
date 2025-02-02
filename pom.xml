@@ -6,7 +6,7 @@
 
     <groupId>com.heledron</groupId>
     <artifactId>sky-torch</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>sky-torch</name>

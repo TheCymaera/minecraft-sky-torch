@@ -5,16 +5,14 @@ import org.bukkit.block.Block
 import org.bukkit.block.data.BlockData
 
 
-val savedData = mutableMapOf<Block, BlockData>()
+private val savedData = mutableMapOf<Block, BlockData>()
 fun setBlock(block: Block, data: BlockData) {
     saveAdjacentBlocks(block)
-    if (!isInLoadedChunk(block)) return
     block.setBlockData(data, false)
 }
 
 fun setBlock(block: Block, data: Material) {
     saveAdjacentBlocks(block)
-    if (!isInLoadedChunk(block)) return
     block.setType(data, false)
 }
 
@@ -23,10 +21,6 @@ fun undoSetBlock() {
         block.setBlockData(data, false)
     }
     savedData.clear()
-}
-
-private fun isInLoadedChunk(block: Block): Boolean {
-    return block.chunk.isLoaded
 }
 
 private fun saveAdjacentBlocks(block: Block) {
@@ -40,6 +34,5 @@ private fun saveAdjacentBlocks(block: Block) {
 }
 
 private fun saveBlock(block: Block) {
-    if (!isInLoadedChunk(block)) return
     if (block !in savedData) savedData[block] = block.blockData
 }

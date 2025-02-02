@@ -39,6 +39,7 @@ class LaserOptions {
     var shockwave = ShockWaveOptions()
     var burnWave = BurnWaveOptions()
     var flashBurn = FlashBurnOptions()
+    var blinding = BlindingEffectOptions()
 
     var explodePlacementOffset = 2.0
     var flashBurnPlacementOffset = 5.0
@@ -109,11 +110,14 @@ class Laser(private val placement: LaserPlacement, private val options: LaserOpt
         placement.hit.y -= options.digDepth
 
 
-            onHit.listen {
+        onHit.listen {
             // give night vision
             if (options.applyNightVision) for (player in placement.world.players) {
                 player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, 10000, 1, true, false, false))
             }
+
+            // blinding effect
+            BlindEffect(placement.world.players, options.blinding)
 
             runLater(1) {
                 playSoundAtPlayers(placement.world, Sound.ENTITY_WARDEN_SONIC_BOOM, 1f, 0f)

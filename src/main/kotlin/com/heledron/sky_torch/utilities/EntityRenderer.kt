@@ -78,20 +78,15 @@ fun lineModel(
 
 fun textModel(
     location: Location,
-    text: String,
-    interpolation: Int,
     init: (TextDisplay) -> Unit = {},
     update: (TextDisplay) -> Unit = {},
 ) = ModelPart(
     clazz = TextDisplay::class.java,
     location = location,
     init = {
-        it.teleportDuration = interpolation
-        it.billboard = Display.Billboard.CENTER
         init(it)
     },
     update = {
-        it.text = text
         update(it)
     }
 )
